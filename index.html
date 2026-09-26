@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Game code đầu tay</title>
+  <meta name="description" content="Web game 2D Pixel art platformer với hiệu ứng vật lý, animation chạy nhảy lật hướng và 3 thử thách độc đáo.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Bar -->
+  <header class="header-bar">
+    <div class="game-title">
+      🎮 <span>EZ</span> GAME
+    </div>
+    <div class="top-actions">
+      <button id="btnSound" class="btn-icon" title="Bật/Tắt âm thanh">
+        <span id="soundIcon">🔊</span> ÂM THANH
+      </button>
+      <button id="btnRestartTop" class="btn-icon" title="Chơi lại từ đầu">
+        🔄 LÀM LẠI
+      </button>
+    </div>
+  </header>
+
+  <!-- Game Container with Canvas and HUD -->
+  <main class="game-container" id="gameContainer">
+    <!-- Game Canvas -->
+    <canvas id="gameCanvas" width="960" height="540"></canvas>
+
+    <!-- In-Game HUD Overlay -->
+    <div class="hud-overlay" id="hudOverlay">
+      <div class="hud-left">
+        <!-- 3 Lives / Hearts -->
+        <div class="health-bar-container">
+          <span class="health-label">MẠNG:</span>
+          <div class="hearts-row" id="heartsRow">
+            <img src="heal.png" alt="Mạng 1" class="heart-icon" id="heart1">
+            <img src="heal.png" alt="Mạng 2" class="heart-icon" id="heart2">
+            <img src="heal.png" alt="Mạng 3" class="heart-icon" id="heart3">
+          </div>
+        </div>
+      </div>
+
+      <div class="hud-right">
+        <!-- Progress / Distance -->
+        <div class="distance-meter">
+          <span class="distance-text" id="distanceText">QUÃNG ĐƯỜNG: 0m / 3000m</span>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start / Story Modal -->
+    <div class="modal-layer show" id="modalStart">
+      <h1 class="modal-title" style="color: #38bdf8; text-shadow: 0 0 16px rgba(56, 189, 248, 0.6);">
+        Chơi game vui vẻ nha😂
+      </h1>
+           <button class="btn-primary" id="btnStartGame" tabindex="-1">
+        ▶ PLAY
+      </button>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div class="modal-layer" id="modalGameOver">
+      <img src="gameover.png" alt="Game Over" class="gameover-banner" id="gameoverImg">
+      <h2 class="modal-title danger">🐤🐤🐤</h2>
+      <p class="modal-desc" id="gameOverReason">
+        Cố lên bạn tôi ơi!
+      </p>
+      <button class="btn-primary" id="btnRestart" tabindex="-1">
+         CHƠI LẠI 
+      </button>
+    </div>
+
+    <!-- Victory Modal -->
+    <div class="modal-layer" id="modalVictory">
+      <div style="font-size: 54px; margin-bottom: 12px; filter: drop-shadow(0 0 15px #facc15);">🏆</div>
+      <h2 class="modal-title victory">CHIẾN THẮNG XUẤT SẮC!</h2>
+      <p class="modal-desc">
+        Chúc mừng bạn đã vượt qua tất cả cạm bẫy và chinh phục vạch đích an toàn!
+      </p>
+      <button class="btn-primary" id="btnPlayAgain" tabindex="-1">
+        ⭐ CHƠI LẠI LẦN NỮA
+      </button>
+    </div>
+  </main>
+
+  <!-- Controls Guide Footer -->
+  <footer class="controls-guide">
+    <div class="keys-group">
+      <span class="guide-rule"><strong>Di chuyển:</strong></span>
+      <span class="key-cap">A</span> / <span class="key-cap">D</span> hoặc 
+      <span class="key-cap">◄</span> <span class="key-cap">►</span> 
+      <span style="font-size: 11px; color: #cbd5e1;">(Lùi sẽ tự lật ngược nhân vật)</span>
+    </div>
+    <div class="keys-group">
+      <span class="guide-rule"><strong>Nhảy:</strong></span>
+      <span class="key-cap">W</span> / <span class="key-cap">▲</span> / <span class="key-cap">Space</span>
+    </div>
+    <div class="keys-group">
+      <span class="guide-rule"><strong>Chạy nhanh:</strong></span>
+      <span class="key-cap">Shift</span>
+    </div>
+    <div class="keys-group">
+      <span class="guide-rule"><strong>Khởi động lại:</strong></span>
+      <span class="key-cap">R</span>
+    </div>
+  </footer>
+
+  <!-- On-Screen Virtual Touch Controls (for Touch and Mobile) -->
+  <div class="touch-controls">
+    <div class="touch-dpad">
+      <button class="touch-btn" id="touchLeft">◄</button>
+      <button class="touch-btn" id="touchRight">►</button>
+    </div>
+    <div class="touch-actions">
+      <button class="touch-btn btn-run" id="touchRun">RUN</button>
+      <button class="touch-btn btn-jump" id="touchJump">JUMP</button>
+    </div>
+  </div>
+<p class="cre-heart">
+  Cre game <span style="color: #e25555;">💻</span> by Hưng
+</p>
+  <!-- Game Logic Script -->
+  <script src="script.js"></script>
+</body>
+</html>
