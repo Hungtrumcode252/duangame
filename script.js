@@ -358,7 +358,7 @@ class Player {
     this.height = 76;  
 
     this.walkSpeed = 5.0;
-    this.runSpeed = 7.0;
+    this.runSpeed = 9.0;
     this.jumpForce = -13.8;
 
     this.facing = 1;
