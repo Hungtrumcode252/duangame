@@ -758,7 +758,7 @@ class FireHazard {
       if (isParallel && this.state !== 'dormant') {
         this.hasShotThisJump = true;
         sound.fireShoot();
-        this.bullets.push(new FireBullet(fireCenterX, this.y + 10, 0, -8.5));
+        this.bullets.push(new FireBullet(fireCenterX, this.y + 10, 0, -15));
       }
     }
 
